@@ -27,15 +27,18 @@ public class Panel extends JPanel implements MouseListener, KeyEventDispatcher {
     public void paintComponent(Graphics g) {
         long time1 = System.currentTimeMillis();
         float dt =  (time1-time) ;
-        world.update(dt);
+        world.update(dt/1000);
+        //world.moveWalls();
         //System.out.println(dt/1000);
         time = time1;
 
         world.sphere.draw(g);
-        /*for (int i = 0; i < 99; i++) {
-            world.walls[i].draw(g);
-        }*/
         world.testWall.draw(g);
+//        for (int i = 0; i < 99; i++) {
+//            world.walls[i].draw(g);
+//        }
+
+
     }
 
 

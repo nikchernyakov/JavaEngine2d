@@ -13,6 +13,6 @@ public class Wall {
     }
     public void draw(Graphics g){
         g.setColor(color);
-        g.drawLine((int) pos1.x, (int) pos1.y, (int) pos2.x, (int) pos2.y);
+        g.drawLine((int) pos1.x,(int) pos1.y, (int) pos2.x, (int) pos2.y);
     }
 }
