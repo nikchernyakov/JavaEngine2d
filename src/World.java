@@ -3,32 +3,44 @@ public class World {
     Wall[] walls = new Wall[99];
     Vector2 g = new Vector2(0,-10);
 
+    Wall testWall;
+
     public World(){
         addWalls();
     }
 
     Point2[] points = new Point2[100];
     public void addWalls() {
-        for (int i = 0; i < 100; i++) {
+        /*for (int i = 0; i < 100; i++) {
             //points[i] = new Point2((int) (i * 50 * (1 + Math.sqrt(2))), (int) (800 + (Math.random() - 0.5) * 2 * 50 * 0.5 * (1 + Math.sqrt(2))));
             points[i] = new Point2((int) (i * 50 * (1 + Math.sqrt(2))), (int) (800));
 
         }
         for (int i = 1; i < 100; i++) {
             walls[i - 1] = new Wall(points[i - 1], points[i], 0.5);
-        }
+        }*/
         //Wall wall = new Wall(new Point2(100,600), new Point2(1000,600), 0.5);
+
+        testWall = new Wall(new Vector2(50, 500), new Vector2(1500, 1000), 0.5);
     }
     public int findWall(){
-        for (int i = 0; i < 99; i++) {
+        /*for (int i = 0; i < 99; i++) {
             if (sphere.checkCollision(walls[i])){
                 return i;
             }
-        }
+        }*/
         return -1;
     }
     public void update(float dt){
-        int wallIndex = findWall();
+        Vector2 intersection = sphere.checkCollision(testWall);
+        if (intersection != null) {
+            System.out.println(intersection.toString());
+        } else {
+            sphere.pos.y = sphere.pos.y-0.001*g.y*dt*dt;
+            //System.out.println("Nope");
+        }
+
+        /*int wallIndex = findWall();
         if (wallIndex == -1){
             sphere.pos.y = sphere.pos.y-0.001*g.y*dt*dt;
             sphere.v.minus(Vector2.mult(g, dt));
@@ -49,6 +61,6 @@ public class World {
                 sphere.v.minus(Vector2.mult(a, dt));
             }
 
-        }
+        }*/
     }
 }
